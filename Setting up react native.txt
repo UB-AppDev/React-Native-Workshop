@@ -1,0 +1,43 @@
+Setting up React native:
+This guide is following offical documentation:
+https://reactnative.dev/docs/environment-setup
+
+Step 1. Creating your project
+create your project with this command:
+npx create-expo-app@latest
+(you can open your terminal on vs code with ctrl + shift + `)
+You will be prompted to install some packages and name our app
+when setup is complete you will see this message
+to begin on the next step cd the folder that was just made
+
+cd yourprojectname
+
+Step 2. Installing Packages
+we will now use npm to install all the required packages
+start by installing expo
+npm install expo
+
+once this is done lets install all the other packages (already listed out as dependinces in package.json)
+npm install
+
+
+Step 3. Confirming setup
+run this command
+npx expo start
+
+this should start expo
+
+in your terminal you will se a qr code, ip adress, and options for how to open your app
+press w in your terminal 
+this will open your browser and will give you basic infromation on react native
+
+
+Step 4. Propperly running the app
+the web view with local host may suffice for now, but it is not how you shoul be building your app
+
+## I NEED SOMONE TO DO THIS STEP I DONT WANT TO DO THIS
+# CREATE STEPS ON HOW TO INSTALL EXPO GO AND USE IT (VERY FAST)
+# CREATE STEPS ON HOW TO INSTALL ANDROID STUDIO, EMULATE, ANDROID, AND RUN EXPO GO ON IT
+    # I RECOMEND WE JSUT GIVE A YT VIDEO (WE ALSO NEED TO DO THIS BEFRE ANY OTHER SETUP BECASUE OF HOW SLOW IT IS)
+
+
