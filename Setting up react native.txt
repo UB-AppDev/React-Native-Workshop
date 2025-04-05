@@ -1,43 +1,38 @@
-Setting up React native:
-This guide is following offical documentation:
+Setting up React Native:
+This guide has the following official documentation:
 https://reactnative.dev/docs/environment-setup
 
 Step 1. Creating your project
-create your project with this command:
+Create your project with this command:
 npx create-expo-app@latest
-(you can open your terminal on vs code with ctrl + shift + `)
-You will be prompted to install some packages and name our app
-when setup is complete you will see this message
-to begin on the next step cd the folder that was just made
 
-cd yourprojectname
+(You can open your terminal on VS Code with ctrl + shift + `)
+You will be prompted to install some packages and name our app (name it To-do-app).
+When the setup is complete, you will see this message.
+To begin with the next step, cd the folder that was just made.
+ cd .\To-do-app\ 
 
 Step 2. Installing Packages
-we will now use npm to install all the required packages
-start by installing expo
+We will now use npm to install all the required packages.
+Start by installing expo:
 npm install expo
 
-once this is done lets install all the other packages (already listed out as dependinces in package.json)
-npm install
+Once this is done, let's install all the other packages (already listed as dependencies in package.json).
+Npm install
 
 
 Step 3. Confirming setup
-run this command
-npx expo start
+Run this command
+Npx expo start
 
-this should start expo
+This should start with an expo.
+In your terminal you will see a qr code, IP address, and options for how to open your app.
+Press w in your terminal 
+This will open your browser and will give you basic information on reacting native
 
-in your terminal you will se a qr code, ip adress, and options for how to open your app
-press w in your terminal 
-this will open your browser and will give you basic infromation on react native
-
-
-Step 4. Propperly running the app
-the web view with local host may suffice for now, but it is not how you shoul be building your app
-
-## I NEED SOMONE TO DO THIS STEP I DONT WANT TO DO THIS
+Step 4. Properly running the app
+The web view with a local host may suffice for now, but it is not how you should be building your app.
+## I NEED SOMEONE TO DO THIS STEP. I DON'T WANT TO DO THIS
 # CREATE STEPS ON HOW TO INSTALL EXPO GO AND USE IT (VERY FAST)
 # CREATE STEPS ON HOW TO INSTALL ANDROID STUDIO, EMULATE, ANDROID, AND RUN EXPO GO ON IT
-    # I RECOMEND WE JSUT GIVE A YT VIDEO (WE ALSO NEED TO DO THIS BEFRE ANY OTHER SETUP BECASUE OF HOW SLOW IT IS)
-
-
+    # I RECOMMEND WE JUST GIVE A YT VIDEO (WE ALSO NEED TO DO THIS BEFORE ANY OTHER SETUP BECAUSE OF HOW SLOW IT IS)
