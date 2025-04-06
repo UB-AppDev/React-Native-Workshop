@@ -1,5 +1,8 @@
 import { Image, Text, View, StyleSheet, Platform } from 'react-native';
 import TaskCard  from '@/components/TaskCard';
+import { db } from '@/firebase/firebaseConfig';
+import { getDocs , collection } from "firebase/firestore";
+import { useState, useEffect } from 'react';
 
 
 
@@ -12,11 +15,31 @@ interface Task{
 
 export default function HomeScreen() {
   // Sample task data
-  const tasks: Task[] = [
-    { title: 'Task 1', description: 'Description 1', date: new Date(), completed: false },
-    { title: 'Task 2', description: 'Description 2', date: new Date(), completed: true },
-    { title: 'Task 3', description: 'Description 3', date: new Date(), completed: false },
-  ];
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const tasksCollectionRef = collection(db, "TaskCards");
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const data = await getDocs(tasksCollectionRef);
+        const fetchedTasks = data.docs.map((doc) => {
+          const task = doc.data();
+          return {
+            title: task.title,
+            description: task.description,
+            date: task.date.toDate(), // Firestore Timestamp to JS Date
+            completed: task.completed
+          };
+        });
+        setTasks(fetchedTasks);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+  
+    fetchTasks();
+  }, []);
+
 
   return (
     <View style={styles.container}>
