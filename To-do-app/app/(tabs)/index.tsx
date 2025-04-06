@@ -4,7 +4,7 @@ import { db } from '@/firebase/firebaseConfig';
 import {getDocs,collection,deleteDoc,doc,updateDoc} from 'firebase/firestore';
 import { useState, useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
-import { styles } from './indexstyle';
+import { styles } from './Styles/indexstyle';
 
 interface Task {
   id: string;

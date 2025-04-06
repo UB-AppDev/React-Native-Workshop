@@ -4,7 +4,7 @@ import { db } from '@/firebase/firebaseConfig';
 import { addDoc, collection } from "firebase/firestore";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from 'expo-router';
-import { styles } from './createstyle'; // 🔥 Import the styles here
+import { styles } from './Styles/createstyle'; // 🔥 Import the styles here
 
 export default function NewTask() {
   const [title, setTitle] = useState('');
