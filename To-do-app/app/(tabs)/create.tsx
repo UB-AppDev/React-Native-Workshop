@@ -5,17 +5,24 @@ import { addDoc, collection } from "firebase/firestore";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from 'expo-router';
 
-
 export default function NewTask() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   const handleCreateTask = async () => {
+    if (!title.trim() || !description.trim()) {
+      alert("Please fill in both the title and description.");
+      return;
+    }
+
     try {
+      setLoading(true);
       const docRef = await addDoc(collection(db, "TaskCards"), {
         title,
         description,
@@ -23,9 +30,18 @@ export default function NewTask() {
         completed
       });
       console.log("Task created with ID:", docRef.id);
+
+      // Optionally clear form here if staying on screen
+      setTitle('');
+      setDescription('');
+      setDate(new Date());
+      setCompleted(false);
+
       router.push('/(tabs)');
     } catch (e) {
       console.log("Error adding task:", e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -70,8 +86,14 @@ export default function NewTask() {
           value={description}
           onChangeText={setDescription}
         />
-        <TouchableOpacity style={styles.button} onPress={handleCreateTask}>
-          <Text style={styles.buttonText}>Submit</Text>
+        <TouchableOpacity
+          style={[styles.button, loading && { opacity: 0.5 }]}
+          onPress={handleCreateTask}
+          disabled={loading}
+        >
+          <Text style={styles.buttonText}>
+            {loading ? 'Submitting...' : 'Submit'}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

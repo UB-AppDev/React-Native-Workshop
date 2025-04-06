@@ -13,16 +13,13 @@ interface Task {
 export default function TaskCard(task: Task) {
   return (
     <View style={styles.container}>
-        {/* Top row that displays our title and date */}
       <View style={styles.topRow}>
         <Text style={styles.title}>{task.title}</Text>
         <Text style={styles.date}>{task.date.toLocaleDateString()}</Text>
       </View>
-      
-        {/* Description of the task */}
+
       <Text style={styles.description}>{task.description}</Text>
 
-        {/* Button row that displays the done and delete buttons */}
       <View style={styles.buttonRow}>
         <TouchableOpacity onPress={task.onToggleComplete} style={styles.doneButton}>
           <Text style={styles.doneButtonText}>
