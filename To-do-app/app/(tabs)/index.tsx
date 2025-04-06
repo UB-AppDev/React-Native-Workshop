@@ -1,16 +1,10 @@
 import { Text, View, ScrollView, SafeAreaView } from 'react-native';
 import TaskCard from '@/components/TaskCard';
 import { db } from '@/firebase/firebaseConfig';
-import {
-  getDocs,
-  collection,
-  deleteDoc,
-  doc,
-  updateDoc
-} from 'firebase/firestore';
+import {getDocs,collection,deleteDoc,doc,updateDoc} from 'firebase/firestore';
 import { useState, useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
-import { styles } from './style';
+import { styles } from './indexstyle';
 
 interface Task {
   id: string;

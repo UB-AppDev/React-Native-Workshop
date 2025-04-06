@@ -1,9 +1,10 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { useState } from 'react';
 import { db } from '@/firebase/firebaseConfig';
 import { addDoc, collection } from "firebase/firestore";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useRouter } from 'expo-router';
+import { styles } from './createstyle'; // 🔥 Import the styles here
 
 export default function NewTask() {
   const [title, setTitle] = useState('');
@@ -31,7 +32,6 @@ export default function NewTask() {
       });
       console.log("Task created with ID:", docRef.id);
 
-      // Optionally clear form here if staying on screen
       setTitle('');
       setDescription('');
       setDate(new Date());
@@ -58,6 +58,7 @@ export default function NewTask() {
 
   return (
     <View style={styles.container}>
+        <Text style={styles.title}>Create a Task</Text>
       <View style={styles.input_container}>
         <TextInput
           style={styles.input}
@@ -99,42 +100,3 @@ export default function NewTask() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {    
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  input_container: {
-    backgroundColor: '#00FFF7',
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#000',
-    padding: 20,
-    width: '80%',
-    alignItems: 'center'
-  },
-  input: {
-    width: '100%',
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    padding: 10,
-    marginBottom: 15,
-    borderWidth: 1,
-    borderColor: '#ddd',
-  },
-  button: {
-    backgroundColor: '#0000FF',
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    alignSelf: 'flex-end',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-});
