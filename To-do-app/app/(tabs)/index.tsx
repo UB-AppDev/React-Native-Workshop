@@ -1,7 +1,13 @@
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, SafeAreaView } from 'react-native';
 import TaskCard from '@/components/TaskCard';
 import { db } from '@/firebase/firebaseConfig';
-import {getDocs,collection,deleteDoc,doc,updateDoc} from 'firebase/firestore';
+import {
+  getDocs,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc
+} from 'firebase/firestore';
 import { useState, useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { styles } from './style';
@@ -23,25 +29,29 @@ export default function HomeScreen() {
       const fetchTasks = async () => {
         try {
           const data = await getDocs(tasksCollectionRef);
-          const fetchedTasks = data.docs.map((doc) => {
-            const task = doc.data();
-            return {
-              id: doc.id,
-              title: task.title,
-              description: task.description,
-              date: task.date.toDate(),
-              completed: task.completed
-            };
-          });
+          const fetchedTasks = data.docs
+            .map((doc) => {
+              const task = doc.data();
+              return {
+                id: doc.id,
+                title: task.title,
+                description: task.description,
+                date: task.date.toDate(),
+                completed: task.completed
+              };
+            })
+            .sort((a, b) => b.date.getTime() - a.date.getTime()); // Sort by newest first
+            
           setTasks(fetchedTasks);
         } catch (error) {
           console.error('Error fetching tasks:', error);
         }
       };
-
+  
       fetchTasks();
     }, [])
   );
+  
 
   const handleDelete = async (taskId: string) => {
     try {
@@ -68,19 +78,21 @@ export default function HomeScreen() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Home</Text>
-        <Text style={styles.text}>Welcome to the home screen!</Text>
-        {tasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            {...task}
-            onDelete={() => handleDelete(task.id)}
-            onToggleComplete={() => handleToggleComplete(task.id, task.completed)}
-          />
-        ))}
-      </View>
-    </ScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Home</Text>
+          <Text style={styles.text}>Welcome to the home screen!</Text>
+          {tasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              {...task}
+              onDelete={() => handleDelete(task.id)}
+              onToggleComplete={() => handleToggleComplete(task.id, task.completed)}
+            />
+          ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }

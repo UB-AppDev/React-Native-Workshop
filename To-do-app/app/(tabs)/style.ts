@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+    paddingTop: 20, // Add space below Dynamic Island
+
   },
   title: {
     fontSize: 30,
@@ -16,4 +18,8 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     color: '#333',
   },
+  scrollContainer: {
+    paddingBottom: 20,
+  },
+  
 });
