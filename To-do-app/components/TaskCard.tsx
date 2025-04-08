@@ -23,7 +23,7 @@ export default function TaskCard(task: Task) {
       <View style={styles.buttonRow}>
         <TouchableOpacity onPress={task.onToggleComplete} style={styles.doneButton}>
           <Text style={styles.doneButtonText}>
-            {task.completed ? 'Done' : 'Mark Done'}
+            {task.completed ? '✔ Done' : 'Mark Done'}
           </Text>
         </TouchableOpacity>
 
@@ -37,29 +37,42 @@ export default function TaskCard(task: Task) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#00FFF7',
-    borderRadius: 20,
+    backgroundColor: '#f9f9fb',
+    borderRadius: 16,
+    padding: 18,
+    paddingHorizontal: 16,
+    marginVertical: 8,
+    width: '100%',
+
+    // ✅ Subtle border and shadow for separation
     borderWidth: 1,
-    borderColor: '#000',
-    padding: 20,
-    margin: 10,
-    width: '90%',
+    borderColor: '#e0e0e0',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 4,
+    elevation: 2,
   },
   topRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 8,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#333',
+    flexShrink: 1,
   },
   date: {
-    fontSize: 18,
-    marginTop: 5,
+    fontSize: 14,
+    color: '#888',
+    alignSelf: 'flex-start',
   },
   description: {
-    fontSize: 18,
-    marginVertical: 10,
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 12,
   },
   buttonRow: {
     flexDirection: 'row',
@@ -67,23 +80,25 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   doneButton: {
-    backgroundColor: '#fff',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    backgroundColor: '#4a90e2',
+    paddingHorizontal: 14,
+    paddingVertical: 8,
     borderRadius: 20,
   },
   doneButtonText: {
-    fontSize: 16,
-    color: '#000',
+    fontSize: 14,
+    color: '#fff',
+    fontWeight: '500',
   },
   deleteButton: {
-    backgroundColor: '#FF0000',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    backgroundColor: '#ff6b6b',
+    paddingHorizontal: 14,
+    paddingVertical: 8,
     borderRadius: 20,
   },
   deleteButtonText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#fff',
+    fontWeight: '500',
   },
 });
