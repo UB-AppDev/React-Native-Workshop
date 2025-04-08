@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
-    paddingTop: 20, // Add space below Dynamic Island
+    paddingTop: 20, // Add space below Dynamic Island (20 for iphone 50 for android)
 
   },
   title: {

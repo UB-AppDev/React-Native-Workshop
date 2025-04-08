@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     padding: 18,
     paddingHorizontal: 16,
     marginVertical: 8,
-    width: '100%',
+    width: '95%',
 
     // ✅ Subtle border and shadow for separation
     borderWidth: 1,
